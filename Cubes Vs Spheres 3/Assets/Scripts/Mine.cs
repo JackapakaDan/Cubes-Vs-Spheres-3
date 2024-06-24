@@ -9,6 +9,7 @@ public class Mine : Weapon
     public AnimationClip anim;
     public GameObject topMine;
     public GameObject bottomMine;
+    bool playerCanTrigger = false;
     GameObject deathRad;
     [SerializeField]
     GameObject deathRadiusPrefab;
@@ -29,6 +30,12 @@ public class Mine : Weapon
         curEffect =  Effects.None;
         type = WeaponType.Placeable;
         StartCoroutine(WaitForDeath());
+        StartCoroutine(WaitForPlayer());
+    }
+    IEnumerator WaitForPlayer()
+    {
+        yield return new WaitForSeconds(3);
+        playerCanTrigger = true;
     }
     IEnumerator WaitForDeath()
     {
@@ -74,7 +81,7 @@ public class Mine : Weapon
    
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Enemy"))
+        if (collision.collider.CompareTag("Enemy")||(collision.collider.CompareTag("Player")&&playerCanTrigger))
         {
             animator.speed = 1;
            
