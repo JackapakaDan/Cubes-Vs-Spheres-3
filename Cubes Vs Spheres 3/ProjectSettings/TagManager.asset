@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Furnature
+  - Bandages
+  - Antidote
+  - Water
+  - Chompers
+  - Enemy
   layers:
   - Default
   - TransparentFX
