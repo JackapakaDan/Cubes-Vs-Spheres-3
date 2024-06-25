@@ -7,6 +7,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // Start is called before the first frame update
+    int mineAmmo = 10;
     public float speed;
     public KeyCode jumpKey;
     public KeyCode forwardKey;
@@ -70,15 +71,11 @@ public class Player : MonoBehaviour
         chompers.SetActive(Globals.curWeapon.ContainsValue(Globals.Weapon.Chompers));
         this.GetComponent<PlayerChompers>().enabled = Globals.curWeapon.ContainsValue(Globals.Weapon.Chompers);
         face.SetActive(!Globals.curWeapon.ContainsValue(Globals.Weapon.Chompers));
-        if (Globals.curWeapon.ContainsValue(Globals.Weapon.Mine))
+        if (Globals.curWeapon.ContainsValue(Globals.Weapon.Mine) && mineAmmo > 0 && Input.GetKeyDown(attackKey))
         {
-
-            if (Input.GetKeyDown(attackKey))
-            {
-                Vector3 mine_position = transform.position;
-                Instantiate(minePrefab, mine_position, Quaternion.identity);
-
-            }
+            mineAmmo--;
+            Vector3 mine_position = transform.position;
+            Instantiate(minePrefab, mine_position, Quaternion.identity);
         }
         
     }
@@ -146,10 +143,18 @@ public class Player : MonoBehaviour
         }
         if(collision.collider.CompareTag("Chompers"))
         {
-            if(Globals.inventory.Count < 8)
+            if(Globals.inventory.Contains(Globals.Weapon.None))
             {
                 Destroy(collision.collider.gameObject);
-                Globals.inventory.Add(Globals.Weapon.Chompers);
+                for(int i = 0;i<Globals.inventory.Count;i++)
+                {
+                    if (Globals.inventory[i]==Globals.Weapon.None)
+                    {
+                        Globals.inventory[i] = Globals.Weapon.Chompers;
+                        break;
+                    }
+                }
+
             }
 
         }
