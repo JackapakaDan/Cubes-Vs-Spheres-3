@@ -24,12 +24,8 @@ public class Enemy : MonoBehaviour
     protected bool stunned = false;
     [SerializeField]
     GameObject inactiveWeapon;
-    public enum EnemyType
-    {
-        Ranged,
-        Malee
-    };
-    public EnemyType type;
+   
+    public Globals.EnemyType type;
     public virtual void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -74,7 +70,7 @@ public class Enemy : MonoBehaviour
     }
     protected virtual void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Player")&&(type != EnemyType.Malee || !Globals.curWeapon.ContainsValue(Globals.Weapon.Chompers)||Globals.chompersAreAttacking == false))
+        if (collision.collider.CompareTag("Player")&&(type != Globals.EnemyType.Malee || !Globals.curWeapon.ContainsValue(Globals.Weapon.Chompers)||Globals.chompersAreAttacking == false))
         {
 
             Destroy(collision.collider.gameObject);

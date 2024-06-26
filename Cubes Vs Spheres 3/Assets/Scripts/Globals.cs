@@ -4,6 +4,34 @@ using UnityEngine;
 
 public class Globals
 {
+    public enum EnemyType
+    {
+        Ranged,
+        Malee
+    };
+    public enum Effects
+    {
+        None,
+        Freeze,
+        Stun,
+        Fire,
+        Explode,
+        Impulse,
+        Poison,
+        Spiky
+    };
+    public enum SpawnerTypes
+    {
+        Enemy,
+        Furnature
+    }
+    public enum WeaponType
+    {
+        Ranged,
+        Malee,
+        Placeable,
+        Projectile
+    };
     public enum Weapon
     {
         None,

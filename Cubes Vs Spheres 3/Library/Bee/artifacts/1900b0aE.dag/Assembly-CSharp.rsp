@@ -361,6 +361,7 @@
 "Assets/Scripts/Player.cs"
 "Assets/Scripts/UIController.cs"
 "Assets/Scripts/Weapon.cs"
+"Assets/Spawner.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01_UGUI.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark02.cs"

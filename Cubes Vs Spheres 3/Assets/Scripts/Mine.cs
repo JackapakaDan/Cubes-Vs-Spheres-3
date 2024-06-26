@@ -27,8 +27,8 @@ public class Mine : Weapon
         curAmmo = 10;
         cost = 0;
         reloadSpeed = 0;
-        curEffect =  Effects.None;
-        type = WeaponType.Placeable;
+        curEffect =  Globals.Effects.None;
+        type = Globals.WeaponType.Placeable;
         StartCoroutine(WaitForDeath());
         StartCoroutine(WaitForPlayer());
     }

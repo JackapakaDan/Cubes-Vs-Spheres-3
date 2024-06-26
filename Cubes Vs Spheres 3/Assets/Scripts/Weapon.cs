@@ -16,27 +16,11 @@ public class Weapon : MonoBehaviour
     protected bool effectDuration;
     protected bool isAttacking = false;
     public KeyCode attackKey;
-    public enum Effects
-    { 
-        None,
-        Freeze,
-        Stun,
-        Fire,
-        Explode,
-        Impulse,
-        Poison,
-        Spiky
-    };
-    protected Effects curEffect;
+    
+    protected Globals.Effects curEffect;
 
-    public enum WeaponType
-    {
-        Ranged,
-        Malee,
-        Placeable,
-        Projectile
-    };
-    public WeaponType type;
+    
+    public Globals.WeaponType type;
     public virtual void Start()
     {
         
@@ -56,7 +40,7 @@ public class Weapon : MonoBehaviour
     }
     public virtual bool CanAttack()
     {
-        if(type == WeaponType.Ranged|| type == WeaponType.Placeable)
+        if(type == Globals.WeaponType.Ranged|| type == Globals.WeaponType.Placeable)
         {
             return (0 < curAmmo);
         }
